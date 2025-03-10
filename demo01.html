@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>大饼的待办清单</title>
+    <style>
+        /* 基础重置 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            background: linear-gradient(to right, #0066ff, #cc00ff);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            padding: 20px;
+        }
+
+        h1 {
+            color: white;
+            text-align: center;
+            margin: 20px 0;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+
+        img {
+            display: block;
+            max-width: 200px;
+            height: auto;
+            margin: 20px auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        /* Todo应用主容器 */
+        .todo_app {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 30px 20px;
+            background-color: #ffffff;
+            border-radius: 15px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+        }
+
+        .title {
+            font-size: clamp(1.5rem, 4vw, 2.2rem);
+            font-weight: 700;
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 30px;
+        }
+
+        /* 待办表单优化 */
+        .todo-form {
+            display: flex;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .todo-input {
+            flex: 1;
+            padding: 15px 20px;
+            border: 1px solid #dfe1e5;
+            border-radius: 30px 0 0 30px;
+            font-size: 16px;
+            transition: box-shadow 0.3s ease;
+        }
+
+        .todo-input:focus {
+            box-shadow: 0 0 0 3px rgba(0,102,255,0.2);
+            outline: none;
+        }
+
+        .todobutton {
+            background: linear-gradient(to right, #0066ff, #cc00ff);
+            color: white;
+            padding: 0 30px;
+            border: none;
+            border-radius: 0 30px 30px 0;
+            cursor: pointer;
+            font-weight: 600;
+            transition: transform 0.2s, opacity 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .todobutton:hover {
+            transform: translateY(-1px);
+            opacity: 0.9;
+        }
+
+        /* 待办项基础样式 */
+        .items-container {
+            margin-top: 30px;
+        }
+
+        .item {
+            display: flex;
+            box-sizing: border-box;
+            width: 90%;
+            min-height: 50px;
+            margin: 12px auto;
+            padding: 16px;
+            border-radius: 20px;
+            box-shadow: 0 8px 20px rgba(128,128,128,0.3);
+            align-items: center;
+            justify-content: space-between;
+            background: white;
+        }
+
+        .item div {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .del {
+            color: red;
+            cursor: pointer;
+            font-weight: 500;
+        }
+
+        .completed {
+            text-decoration: line-through;
+            opacity: 0.4;
+        }
+
+        /* 响应式优化 */
+        @media (max-width: 480px) {
+            .todo-form {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .todo-input {
+                border-radius: 20px;
+                width: 100%;
+            }
+
+            .todobutton {
+                border-radius: 20px;
+                padding: 15px;
+                justify-content: center;
+            }
+
+            .item {
+                width: 100%;
+                margin: 12px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>欢迎来到大饼的待办清单</h1>
+    <img src="/Users/justin/Pictures/头像/大嘴猴头像.JPG" alt="大嘴猴头像">
+
+    <div class="todo_app">
+        <h2 class="title">今日待办事项</h2>
+        
+        <!-- 待办表单 -->
+        <div class="todo-form">
+            <input 
+                type="text" 
+                class="todo-input"
+                placeholder="请输入待办事项..."
+                aria-label="待办事项输入框"
+            >
+            <button type="button" class="todobutton">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 5v14M5 12h14"/>
+                </svg>
+                添加
+            </button>
+        </div>
+
+        <!-- 待办事项容器 -->
+        <div class="items-container">
+            <div class="item completed">
+                <div>
+                    <input type="checkbox">
+                    <span class="name">吃饭</span>
+                </div>
+                <div class="del">del</div>
+            </div>
+
+            <div class="item">
+                <div>
+                    <input type="checkbox">
+                    <span class="name">学习CSS</span>
+                </div>
+                <div class="del">del</div>
+            </div>
+
+            <div class="item">
+                <div>
+                    <input type="checkbox">
+                    <span class="name">完成项目</span>
+                </div>
+                <div class="del">del</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
